@@ -5,6 +5,7 @@ const axios = require("axios");
 const bcrypt = require("bcrypt");
 const app = Express();
 
+//45
 app.use(Express.json());
 app.use(Express.urlencoded({ extended: true }));
 app.use(cors());
