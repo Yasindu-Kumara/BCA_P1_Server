@@ -1,5 +1,5 @@
 const Express = require("express");
-const collection = require("../Mongodb/mongo");
+const collection = require("./Mongodb/mongo");
 const cors = require("cors");
 const axios = require("axios");
 const bcrypt = require("bcrypt");
