@@ -3,15 +3,17 @@ const collection = require("./Mongodb/mongo");
 const cors = require("cors");
 const bcrypt = require("bcrypt");
 const app = Express();
-require('dotenv').config();
+require("dotenv").config();
 
 app.use(Express.json());
 app.use(Express.urlencoded({ extended: true }));
 app.use(cors());
 
-const port = process.env.PORT
+const port = process.env.PORT;
 
-app.get("/", cors(), function (req, res) {});
+app.get("/", cors(), function (req, res) {
+  res.send("health check");
+});
 
 app.post("/Signin", async (req, res) => {
   const { Email, Password } = req.body;
