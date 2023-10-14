@@ -1,8 +1,11 @@
 const mongoose = require("mongoose");
+require('dotenv').config();
+
+const mongodb_api_key = process.env.MONGODB_KEY
 
 const url =
-  "mongodb+srv://slyasindu:J8XX0MFlrLDd7zPF@cluster0.gltftqv.mongodb.net/userDB?retryWrites=true&w=majority";
-
+  `mongodb+srv://slyasindu:${mongodb_api_key}@cluster0.gltftqv.mongodb.net/userDB?retryWrites=true&w=majority`;
+  
 const connectionParams = {
   useUnifiedTopology: true,
 };

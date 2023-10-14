@@ -1,13 +1,16 @@
 const Express = require("express");
 const collection = require("./Mongodb/mongo");
 const cors = require("cors");
+const axios = require("axios");
 const bcrypt = require("bcrypt");
 const app = Express();
+require('dotenv').config();
 
-//45
 app.use(Express.json());
 app.use(Express.urlencoded({ extended: true }));
 app.use(cors());
+
+const port = process.env.PORT
 
 app.get("/", cors(), function (req, res) {});
 
@@ -33,7 +36,7 @@ app.post("/Signin", async (req, res) => {
   }
 });
 
-app.post("/Signup", async (req, res) => {
+app.post("/", async (req, res) => {
   const { Fullname, Username, Email, Password } = req.body;
 
   const saltRounds = 10;
@@ -62,6 +65,6 @@ app.post("/Signup", async (req, res) => {
   }
 });
 
-app.listen(8000, () => {
+app.listen(port, () => {
   console.log("server is start prot 8000");
 });
