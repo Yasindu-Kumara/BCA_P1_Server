@@ -9,7 +9,7 @@ app.use(Express.json());
 app.use(Express.urlencoded({ extended: true }));
 app.use(cors());
 
-const port = process.env.PORT;
+const port = process.env.PORT || 8000;
 
 app.get("/", cors(), function (req, res) {
   res.send("health check");
