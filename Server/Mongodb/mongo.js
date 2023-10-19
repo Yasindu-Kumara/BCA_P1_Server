@@ -41,6 +41,59 @@ const newSchema = new mongoose.Schema({
   },
 });
 
-const collection = mongoose.model("collection", newSchema);
+const stockSchema = new mongoose.Schema({
+  ProductName: {
+    type: String,
+    require: true,
+  },
+  Manufacturer: {
+    type: String,
+    require: true,
+  },
+  Color: {
+    type: String,
+    require: true,
+  },
+  Size: {
+    type: String,
+    require: true,
+  },
+  QuantityOnStock: {
+    type: Number,
+    require: true,
+  },
+});
 
-module.exports = collection;
+const cardSchema = new mongoose.Schema({
+  totalIncome: {
+    type: String,
+    require: true,
+  },
+  totalExpense: {
+    type: String,
+    require: true,
+  },
+  totalCredit: {
+    type: String,
+    require: true,
+  },
+  totalBonus: {
+    type: String,
+    require: true,
+  },
+  totalProduct: {
+    type: String,
+    require: true,
+  },
+  totalEarning: {
+    type: String,
+    require: true,
+  },
+})
+
+const collection = mongoose.model("collection", newSchema);
+const stocks = mongoose.model("stocks",stockSchema);
+const card = mongoose.model("card", cardSchema);
+
+
+module.exports = {collection, stocks, card};

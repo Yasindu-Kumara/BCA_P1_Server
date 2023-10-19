@@ -1,5 +1,5 @@
 const Express = require("express");
-const collection = require("./Mongodb/mongo");
+const {collection, stocks, card} = require("./Mongodb/mongo");
 const cors = require("cors");
 const bcrypt = require("bcrypt");
 const app = Express();
@@ -13,6 +13,36 @@ const port = process.env.PORT || 8000;
 
 app.get("/", cors(), function (req, res) {
   res.send("health check");
+});
+
+app.get("/Dashboard", async (req, res) => {
+  try {
+    const cards = await card.find({});
+    res.json(cards);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+app.get("/Dashboard/User", async (req, res) => {
+  try {
+    const users = await collection.find({});
+    res.json(users);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+app.get("/Dashboard/Item", async (req, res) => {
+  try {
+    const stock = await stocks.find({});
+    res.json(stock);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
 });
 
 app.post("/Signin", async (req, res) => {
